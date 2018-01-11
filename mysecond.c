@@ -24,4 +24,4 @@ struct timezone { int   tz_minuteswest;
 }
 
 double mysecond_() {return mysecond();}
-
+ 
