@@ -1,15 +1,16 @@
 CC = gcc
 CFLAGS = -O2
 
-
-
-all:stream_c.exe
+all:stream_c.exe mycode
 
 stream_c.exe: stream.c
 	$(CC) $(CFLAGS) stream.c -o stream_c.exe
 
+mycode: mycode.c
+	$(CC) $(CFLAGS) mycode.c -o mycode
+
 clean:
-	rm -f stream_c.exe *.o
+	rm -f stream_c.exe mycode *.o
 
 # an example of a more complex build line for the Intel icc compiler
 stream.icc: stream.c
