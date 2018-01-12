@@ -1,0 +1,24 @@
+Starting prologue... Fri Jan 12 08:21:06 CET 2018
+Master node: e0108
+Kill all process from other users
+Adjust oom killer config
+Clearing buffers and caches on the nodes.
+Power management available, setting specified frequency of 2200000 using performance governor
+End of prologue: Fri Jan 12 08:21:12 CET 2018
+rm -f stream_c.exe mycode *.o
+gcc -O2 stream.c -o stream_c.exe
+gcc -O2 mycode.c -o mycode
+Starting epilogue... Fri Jan 12 08:23:00 CET 2018
+=== JOB_STATISTICS ===
+=== current date     : Fri Jan 12 08:23:00 CET 2018
+= Job-ID             : 869085.eadm
+= Job-Name           : mycode
+= Queue              : devel
+= PBS_O_WORKDIR      : /home/hpc/rzku/ptfs087h/WIP/WIP
+= Requested resources: ncpus=1,neednodes=1:ppn=40:f2.2,nodes=1:ppn=40:f2.2,walltime=01:00:00
+= Used resources     : cput=00:01:47,mem=364640kb,vmem=1057332kb,walltime=00:01:48
+= Node list          : e0108
+= AccessKey          : 0a0a63dc
+======================
+Power management available, setting all CPUs to ondemand govenor
+End of epilogue: Fri Jan 12 08:23:00 CET 2018
