@@ -14,3 +14,7 @@
 # Executables
 *.exe
 *.out
+
+# Error files
+*.e*
+*.o*

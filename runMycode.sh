@@ -22,7 +22,7 @@ do
 	do
 		nums=`echo "$START*$BASE^$s" | bc -l | xargs printf "%f\n"`
 		printf "%i" $t >> $OUTFILE$t
-		echo $(./mycode $nums) >> $OUTFILE$t
+		echo $(likwid-pin -q -s 0x0 -c E:N:$t:1:2 ./mycode $nums) >> $OUTFILE$t
 	done
 done
 
