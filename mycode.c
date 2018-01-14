@@ -46,24 +46,24 @@ int main(int argc, char* argv[]){
 	const int array_size = num_elements*sizeof(double);
 
 	double *A; 
-	// double *B; 
-	// double *C; 
-	// double *D;	
+	double *B; 
+	double *C; 
+	double *D;	
 
 	A = (double *) malloc(array_size);
-	// B = (double *) malloc(array_size);
-	// C = (double *) malloc(array_size);
-	// D = (double *) malloc(array_size);
+	B = (double *) malloc(array_size);
+	C = (double *) malloc(array_size);
+	D = (double *) malloc(array_size);
 	  
 
 	// double a, b, c, d, tmp;
 	int i;	
-
+	#pragma omp parallel for
 	for(i = 0; i < num_elements; ++i){
 		A[i] = 1.01;
-		// B[i] = 1.03;
-		// C[i] = 1.04;
-		// D[i] = 0;
+		B[i] = 1.03;
+		C[i] = 1.04;
+		D[i] = 0;
 	}
 
 	//vect triad
@@ -72,13 +72,15 @@ int main(int argc, char* argv[]){
 	int r;
 	double s = 5;
 	while( (end-start) < 0.1){
+		#pragma inline
 		timing(&start, &ct);
+		#pragma omp parallel private (r, i)
 		for(r = 0; r < repeat; ++r){
-			
+			#pragma omp for
 			for(i = 0; i < num_elements; ++i){
-				// A[i] = B[i] + C[i] * D[i];
-				A[i] = s;
-				if(A[i]<0) printf("stop\n");
+				A[i] = B[i] + C[i] * D[i];
+				// A[i] = s;
+				// if(A[i]<0) printf("stop\n");
 			}
 			if(A[i]<0) printf("stop\n");
 		}
@@ -90,7 +92,7 @@ int main(int argc, char* argv[]){
 	printf(", %d, %f\n", num_elements, (2.0*repeat*num_elements)/(end-start)/1000000.0);
 
 	free(A);
-	// free(B);
-	// free(C);
-	// free(D);
+	free(B);
+	free(C);
+	free(D);
 }

@@ -2,6 +2,8 @@
 
 OUTFILE=data/data_size
 
+module load intel64
+module load likwid
 make clean
 make
 
@@ -15,7 +17,7 @@ SAMPLES=32
 
 BASE=`echo "e(l($STOP/$START)/$SAMPLES)" | bc -l`
 
-for t in `seq 1 10`
+for t in `seq 1 8`
 do
 	rm -f $OUTFILE$t
 	for s in `seq 0 $SAMPLES`
