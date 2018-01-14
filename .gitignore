@@ -20,4 +20,4 @@
 *.o*
 
 # Folder
-*.idea
+.idea/*
