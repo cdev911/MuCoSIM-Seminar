@@ -17,22 +17,12 @@ for i in range(1, 11):
     plt.plot(x, y, 'bo', x, y, 'k')
     plt.xscale('log')
 
-cache_size = [100, 500, 1000]
+cache_size = [1000, 8000, 781250]
 for xc in cache_size:
     plt.axvline(x=xc)
-plt.grid(True,which="both",ls="-")
+plt.grid(True,which="both",ls="--")
 
 plt.xlabel('Number of elements')
 plt.ylabel('M Flop')
 plt.title('Plot for '+ str(threads)+ ' threads')
 plt.show()
-#
-# t = np.arange(0.0, 2.0, 0.01)
-# s = 1 + np.sin(2*np.pi*t)
-# plt.plot(t, s)
-#
-# plt.xlabel('time (s)')
-# plt.ylabel('voltage (mV)')
-# plt.title('About as simple as it gets, folks')
-# plt.grid(True)
-# plt.show()
