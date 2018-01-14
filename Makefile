@@ -8,7 +8,7 @@ FLAGS += -qopt-report=5
 # FLAGS += -xCOMMON-AVX512
 
 target = mycode
-all:stream_c.exe mycode
+# all:stream_c.exe mycode
 
 $(target): $(target).o $(target).s 
 	$(CXX) $(FLAGS) $(LDFLAGS) -o $@  $<
