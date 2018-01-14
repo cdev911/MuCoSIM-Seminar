@@ -19,7 +19,9 @@ BASE=`echo "e(l($STOP/$START)/$SAMPLES)" | bc -l`
 
 for t in `seq 1 8`
 do
+	export OMP_NUM_THREADS=$t
 	rm -f $OUTFILE$t
+	
 	for s in `seq 0 $SAMPLES`
 	do
 		nums=`echo "$START*$BASE^$s" | bc -l | xargs printf "%f\n"`
