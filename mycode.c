@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
 	D = (double *) _mm_malloc(array_size, 64);
 	  
 
-	double a, b, c, d, tmp;
+	__m256d a, b, c, d, tmp;
 	int i;	
 
 	#pragma omp parallel for
