@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "timing.h"
+#include <immintrin.h>
 #include <errno.h>
 #include <sys/time.h>
 #include <time.h>
