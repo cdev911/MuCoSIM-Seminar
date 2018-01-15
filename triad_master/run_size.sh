@@ -11,7 +11,7 @@ make
 
 #num elements, start at 
 #end at 34M*8B = 272MB -> 272MB*4arrays=1GB of RAM at double precision (8B)
-START=$((16))
+START=$((8))
 STOP=$((34*1024*1024))
 SAMPLES=64
 
