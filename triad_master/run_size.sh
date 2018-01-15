@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OUTFILE=data/data_size
+OUTFILE=dataRyzen/data_size
 
 module load intel64
 module load likwid

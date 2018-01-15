@@ -49,7 +49,7 @@ main:
 ..LN7:
         movq      %rsi, %r12                                    #39.33
 ..LN8:
-        movl      $104446, %esi                                 #39.33
+        movl      $71678, %esi                                  #39.33
 ..LN9:
         movl      $3, %edi                                      #39.33
 ..LN10:
