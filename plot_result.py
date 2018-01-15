@@ -6,7 +6,7 @@ import csv
 for i in range(1, 11):
     x = []
     y = []
-    file_name = 'data/data_size'+str(i) 
+    file_name = 'data_emmy_thread_avx/data_size'+str(i) 
     with open(file_name, 'r') as csvfile:
         plots = csv.reader(csvfile, delimiter=',')
         for row in plots:
