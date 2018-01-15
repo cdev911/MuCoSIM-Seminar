@@ -50,14 +50,15 @@ int main(int argc, char* argv[]){
 	double *C; 
 	double *D;	
 
-	A = (double *) malloc(array_size);
-	B = (double *) malloc(array_size);
-	C = (double *) malloc(array_size);
-	D = (double *) malloc(array_size);
+	A = (double *) _mm_malloc(array_size, 64);
+	B = (double *) _mm_malloc(array_size, 64);
+	C = (double *) _mm_malloc(array_size, 64);
+	D = (double *) _mm_malloc(array_size, 64);
 	  
 
-	// double a, b, c, d, tmp;
+	double a, b, c, d, tmp;
 	int i;	
+
 	#pragma omp parallel for
 	for(i = 0; i < num_elements; ++i){
 		A[i] = 1.01;
@@ -70,20 +71,29 @@ int main(int argc, char* argv[]){
 	int repeat = 1;
 	double start, end, ct;
 	int r;
-	double s = 5;
+	// double s = 5;
 	while( (end-start) < 0.1){
 		#pragma inline
 		timing(&start, &ct);
 		#pragma omp parallel private (r, i)
 		for(r = 0; r < repeat; ++r){
 			#pragma omp for
-			for(i = 0; i < num_elements; ++i){
-				A[i] = B[i] + C[i] * D[i];
+			#pragma unroll(4)
+			#pragma loop_count(1600)		
+			for(i = 0; i < num_elements-4; i+=4){
+				// A[i] = B[i] + C[i] * D[i];
+				c = _mm256_load_pd(C+i);
+				b = _mm256_load_pd(B+i);
+				a = _mm256_load_pd(A+i);
+				tmp = c = _mm256_mul_pd(b,c);
+				d = _mm256_add_pd(tmp, a);
+				_mm256_store_pd(D+i, d);
 				// A[i] = s;
 				// if(A[i]<0) printf("stop\n");
 			}
 			if(A[i]<0) printf("stop\n");
 		}
+		#pragma inline
 		timing(&end, &ct);
 		repeat *= 2;
 	}
@@ -91,8 +101,8 @@ int main(int argc, char* argv[]){
 
 	printf(", %d, %f\n", num_elements, (2.0*repeat*num_elements)/(end-start)/1000000.0);
 
-	free(A);
-	free(B);
-	free(C);
-	free(D);
+	_mm_free(A);
+	_mm_free(B);
+	_mm_free(C);
+	_mm_free(D);
 }

@@ -17,7 +17,7 @@ SAMPLES=32
 
 BASE=`echo "e(l($STOP/$START)/$SAMPLES)" | bc -l`
 
-for t in `seq 1 8`
+for t in `seq 1 10`
 do
 	export OMP_NUM_THREADS=$t
 	rm -f $OUTFILE$t
@@ -29,4 +29,3 @@ do
 		echo $(likwid-pin -q -s 0x0 -c E:N:$t:1:2 ./mycode $nums) >> $OUTFILE$t
 	done
 done
-
