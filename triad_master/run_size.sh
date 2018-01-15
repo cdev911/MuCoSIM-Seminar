@@ -13,7 +13,7 @@ make
 #end at 34M*8B = 272MB -> 272MB*4arrays=1GB of RAM at double precision (8B)
 START=$((16))
 STOP=$((34*1024*1024))
-SAMPLES=32
+SAMPLES=64
 
 BASE=`echo "e(l($STOP/$START)/$SAMPLES)" | bc -l`
 
