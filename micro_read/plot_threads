@@ -1,0 +1,15 @@
+set title "Threads vs. Performance \n Transfers from memory \n Vector Triad A=B+C*D"
+set xlabel "Number Threads"
+set ylabel "Performance [MFlops/s]"
+set key outside
+#set format x "10^%T"
+set autoscale
+#set logscale x
+#set xrange[256:]
+filename(n) = sprintf("data/data_threads%d", n)
+titlename(n) = sprintf("size: %s [n]", n)
+socket = 10
+set arrow from socket, graph 0 to socket, graph 1 nohead
+plot for [i=0:0] filename(i) using 1:3 w lp title columnheader
+#plot "data/data1" using 2:3 w lp title "1 thread w/o OMP", "data/data1omp" u 2:3 w lp title "1 thread w OMP"
+pause -1 

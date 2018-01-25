@@ -1,0 +1,19 @@
+set title "Array size vs. Performance \n Vector Triad A=B+C*D"
+set xlabel "Array size"
+set ylabel "Performance [MFlops/s]"
+#set key outside
+set format x "10^%T"
+set autoscale
+set logscale x
+#set xrange[256:]
+filename(n) = sprintf("data/data_size%d", n)
+titlename(n) = sprintf("%d threads", n)
+l1 = 1024   #32kB/4arrays/8B
+l2 = 8192
+l3 = 819200
+set arrow from l1, graph 0 to l1, graph 1 nohead
+set arrow from l2, graph 0 to l2, graph 1 nohead
+set arrow from l3, graph 0 to l3, graph 1 nohead
+plot for [i=1:10] filename(i) using 2:3 w lp title titlename(i)
+#plot "data/data_size1" using 2:3 w lp title "1 thread w/o OMP", "data/data_size1omp" u 2:3 w lp title "1 thread w OMP"
+pause -1 

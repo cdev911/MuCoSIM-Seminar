@@ -1,0 +1,12 @@
+#!/bin/csh
+
+##// -l nodes=1:ppn=40:f2.2:ddr1600,walltime=00:10:00
+#PBS -l nodes=skylakesp2,walltime=00:10:00
+#PBS -N mucosim_read
+#PBS -e random/
+#PBS -o random/
+
+cd $PBS_O_WORKDIR
+
+./run_size.sh
+#./run_threads.sh
