@@ -3,10 +3,9 @@ CXX= icc
 FLAGS =  -Ofast -fno-alias -O3 -xHost -qopt-streaming-stores=never
 LDFLAGS = 
 LIBS = 
-INC = -I/apps/intel/Compiler/11.1/080/include/
 FLAGS += -DUSEOMP -qopenmp
 FLAGS += -qopt-report=5
-target = triad
+target = triad_simple
 
 
 $(target): $(target).o $(target).s 

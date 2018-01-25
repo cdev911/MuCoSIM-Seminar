@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "timing.h"
-#include <immintrin.h>
-#include <errno.h>
 #include <sys/time.h>
 #include <time.h>
 
@@ -42,6 +40,8 @@ int main(int argc, char* argv[]){
 		printf("please call with correct arguments ./triad [num_elements in each array]\n");
 		exit(-1);
 	}
+	const int unroll = 4;
+	const int avx = 4;
 	int num_elements = atoi(argv[1]);
 	num_elements = num_elements - (num_elements%(avx*unroll));
 	const int array_size = num_elements*sizeof(real);
@@ -78,7 +78,7 @@ int main(int argc, char* argv[]){
 		#pragma omp parallel private (r, i)
 		for(r = 0; r < repeat; ++r){			
 			#pragma omp for
-			#pragma loop_count(1600)
+			
 			for(i = 0; i < num_elements; i++){
 				D[i] = A[i] + B[i] * C[i];
 			}
