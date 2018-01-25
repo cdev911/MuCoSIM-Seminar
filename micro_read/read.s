@@ -936,7 +936,7 @@ main:
 ### 		
 ### 	}
 ### 
-### 	printf("%d %ld %d %d %f %ld \n", num_elements, bytes_total, num_reads, alignment, (bytes_total*((double)repeat))/(end-start)/1000000.0, (end-start));
+### 	printf("%d %ld %d %d %f %d \n", num_elements, bytes_total, num_reads, alignment, (bytes_total*((double)repeat))/(end-start)/1000000.0, (end-start));
 
         movq      104(%rsp), %rdx                               #652.2[spill]
 ..LN95:
@@ -948,13 +948,13 @@ main:
 ..LN98:
         vmulsd    .L_2il0floatpacket.7(%rip), %xmm17, %xmm18    #652.2
 ..LN99:
-        vmovsd    96(%rsp), %xmm16                              #652.116
+        vmovsd    96(%rsp), %xmm16                              #652.115
 ..LN100:
         movl      %r13d, %esi                                   #652.2
 ..LN101:
         vmulsd    %xmm19, %xmm18, %xmm20                        #652.2
 ..LN102:
-        vsubsd    56(%rsp), %xmm16, %xmm1                       #652.120
+        vsubsd    56(%rsp), %xmm16, %xmm1                       #652.119
 ..LN103:
         movl      %r12d, %ecx                                   #652.2
 ..LN104:
@@ -13268,11 +13268,11 @@ timing:
 	.long	622879852
 	.long	1680154724
 	.long	543565088
-	.long	543452197
-	.word	10
+	.long	169894949
+	.byte	0
 	.type	.L_2__STRING.3,@object
-	.size	.L_2__STRING.3,22
-	.space 2, 0x00 	# pad
+	.size	.L_2__STRING.3,21
+	.space 3, 0x00 	# pad
 	.align 4
 .L_2__STRING.1:
 	.long	1145128274

@@ -649,7 +649,7 @@ int main(int argc, char* argv[]){
 		
 	}
 
-	printf("%d %ld %d %d %f %ld \n", num_elements, bytes_total, num_reads, alignment, (bytes_total*((double)repeat))/(end-start)/1000000.0, (end-start));
+	printf("%d %ld %d %d %f %d \n", num_elements, bytes_total, num_reads, alignment, (bytes_total*((double)repeat))/(end-start)/1000000.0, (end-start));
 	
 	exit(EXIT_SUCCESS);
 }
